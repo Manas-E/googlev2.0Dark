@@ -1,4 +1,16 @@
-export default {
+import React from 'react'
+
+function Res() {
+    return (
+        <div>
+            
+        </div>
+    )
+}
+
+export default Res
+
+export const res= {
     "kind": "customsearch#search",
     "url": {
         "type": "application/json",

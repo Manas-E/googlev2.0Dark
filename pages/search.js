@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import Header from './Header'
 import PaginationButtons from './PaginationButtons'
-import res from './res'
+import {res} from './res'
 import SearchResults from './SearchResults'
 
 function Search({results}) {

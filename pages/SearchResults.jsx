@@ -7,7 +7,7 @@ function SearchResults({results}) {
             <p className='text-gray-600 test-md mb-5 mt-3'>About {results?.searchInformation.formattedTotalResults}  results {results?.searchInformation.formattedSearchTime} seconds</p>
             
 
-            {results.items?.map((result)=>{
+            {results?.items?.map((result)=>{
                 return <div key={result.link} className="max-w-xl mb-5">
                     <div className="group">
                     
