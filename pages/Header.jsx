@@ -25,7 +25,7 @@ function Header() {
     return (
         <header className="sticky top-0 bg-gray-900 text-gray-100">
          <div  className="p-4 items-center flex w-full">
-         <Image loading="lazy" src='https://lh3.googleusercontent.com/proxy/i8B8kWJpAYO35eIrRDUgPm2gdgYBowmyNsg0Cj11R1_QEWnIWoP8v93EL0G8Ao5QZ2oWyyL6gxo1U9R53iAUJUKSe9SHYMfRcX4jusRnrPmj4zqSIIt7eSl1K9mF2b4KjA'
+         <Image loading="lazy" src='http://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c51f.png'
             height={60}
             width={180} 
             onClick={()=>{router.push("/")}} 
