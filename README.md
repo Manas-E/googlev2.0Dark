@@ -1,4 +1,5 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+It is basically a clone of Google built with Next.js and tailwind.css. I have used google search API for bringing search results, tell me how's [Google_2.0](https://googlev2-0-dark.vercel.app/)
 
 ## Getting Started
 
