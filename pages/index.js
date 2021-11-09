@@ -7,6 +7,7 @@ import {useRouter} from 'next/router'
 import { useRef, useState } from 'react'
 
 import {signIn,signOut,useSession} from "next-auth/client"
+import VoiceSearch from "../components/VoiceSearch"
 
 
 export default function Home() {
@@ -15,20 +16,19 @@ export default function Home() {
  const router = useRouter();
  const searchInputref = useRef(null);
  const session = useSession();
+ const [voicestate,setvoiceState] = useState(false)
 
-
- const [sound,setsound]= useState(false);
   const search =(e)=>{
     e.preventDefault();
     const term= searchInputref.current.value;
     console.log("==>",term);
     if(!term) return;
-
+ 
     router.push(`/search?term=${term}`);
 
-
-
   }
+
+
 
   return (
     <div className='flex flex-col items-center justify-center h-screen bg-gray-900' >
@@ -40,15 +40,16 @@ export default function Home() {
    
       {/* head */}
       <header className='flex w-full justify-between p-5  text-gray-100 font-medium'>
+
         {/* left header */}
         <div className='flex space-x-4 items-center '>
-          <p className='link'>About</p>
-          <p  className='link'>Store</p>
+         <a  href="https://en.wikipedia.org/wiki/Google"> <p className='link'>About</p> </a>
+        <a href="https://store.google.com/in/">  <p  className='link'>Store</p> </a>
         </div>
 
         {/* right header */}
         <div  className='flex space-x-4 items-center '>
-        <p  onClick={()=>console.log(session) } className='link'>Gmail</p>
+        <a href="https://mail.google.com/">   <p  className='link'>Gmail</p>   </a>
         <p onClick={()=>console.log(session)  }  className='link'>Images</p>
 
           {/* icon*/}
@@ -67,23 +68,26 @@ export default function Home() {
 
       {/* body */}
 
-        <form className="flex flex-col mt-0 flex-grow  items-center">
+        <form className="flex flex-col mt-0 flex-grow  items-center h-screen">
         <Image className='mb-0' src='http://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c51f.png'
         height= {200}
         width={600}                                
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             />
 
-        <div className="flex w-full hover:shadow-lg focus-within:shadow-lg max-w-md
-         border border-gray-200 rounded-full px-5 py-3 items-center sm:max-w-lg" > 
-        <SearchIcon className='h-5 mr-3 text-gray-500' />
+        <div className="flex w-full  hover:shadow-lg focus-within:shadow-lg 
+         border border-gray-200 rounded-full px-5 py-3 items-center" > 
+        <SearchIcon aria-label="Search by Voice" className='h-5 mr-3 text-gray-500' />
         <input  ref={searchInputref} type='text' className='focus:outline-none flex-grow bg-gray-900 text-gray-100'/>
-        <MicrophoneIcon className='h-5 text-gray-100' />
+        <MicrophoneIcon onClick={()=>setvoiceState(!voicestate)} className='h-5 cursor-pointer text-gray-100' />
+        {voicestate &&  <VoiceSearch setvoiceState={setvoiceState} className="absolute z-1000     items-stretch h-screen w-screen  flex  bg-white " />}
+       
+
         </div>
 
         <div className="flex flex-col justify-center  sm:flex-row"> 
 
         <button  onClick={search}  className="btn" >Google Search</button> 
-        <button  onClick={search}   className="btn">I'm feeling lucky</button> 
+        <button  formAction= 'https://www.google.com/doodles'   className="btn">I'm feeling lucky</button> 
          
         </div>
         </form>

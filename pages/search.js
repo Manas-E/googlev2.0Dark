@@ -15,9 +15,10 @@ const router=useRouter();
             <Head>
                 <title>{router.query.term} - Google Search</title>
             </Head>
-            <Header />
+            <Header e={router.query.term} />
 
             <SearchResults  results={results}/>
+
             <PaginationButtons/>
         </div>
     )
@@ -28,10 +29,16 @@ export default Search
 export async function getServerSideProps(context){
         const useDummyData=false;
         const startIndex = context.query.start || '0';
+
+        const url =`https://www.googleapis.com/customsearch/v1?key=${process.env.REACT_APP_API_KEY}&cx=${process.env.REACT_APP_CONTEXT_KEY}&q=${context.query.term}&start=${startIndex}&searchType=${context.query.searchType || "searchTypeUndefined"}`
+        console.log(url)
+     
         const data= useDummyData?
         res
-        : await fetch(`https://www.googleapis.com/customsearch/v1?key=${process.env.REACT_APP_API_KEY}&cx=${process.env.REACT_APP_CONTEXT_KEY}&q=${context.query.term}&start=${startIndex}`)
+        : await fetch(url)
         .then(res=>{return res.json()})
+
+
 
         return {
             props:{
