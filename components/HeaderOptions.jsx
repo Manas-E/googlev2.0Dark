@@ -7,7 +7,6 @@ function HeaderOptions({e}) {
 
     const search =(e)=>{
         console.log("==>",e);
-        alert(e)
         if(!e) return;
     
         router.push(`/search?term=${e}&searchType=image`);
